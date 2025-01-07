@@ -1,0 +1,7 @@
+function Detail(){
+  return(
+
+  )
+}
+
+exp
