@@ -34,7 +34,7 @@ function App() {
               let copy = [...shoes]
               copy.sort((a,b)=> a.title.toLowerCase() > b.title.toLowerCase() ? 1:-1)
               제목변경(copy)
-            }}> 열정버튼 </button>
+            }}> 버튼 </button>
             <div className='main-bg' style={{ backgroundImage : 'url(' + bg + ')' }}></div>
             <Row>
               {
