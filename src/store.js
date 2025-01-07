@@ -15,7 +15,7 @@ let user = createSlice({
 
 let shoes = createSlice({
   name : 'shoes',
-  initialState : 
+  initialState : ''
 })
 
 
