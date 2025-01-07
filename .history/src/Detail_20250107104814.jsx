@@ -1,31 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { Nav } from 'react-bootstrap'
+ 
 function Detail(props){
 
   let {id} = useParams();
   let a = props.shoes.find((x)=> x.id == id )
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
-
-  // // 1. 랜더링 할때마다 코드 실행 
-  // useEffect(()=>{ 실행할코드 })
-
-  // // 2. 컴포넌트 mount시 1회만
-  // useEffect(()=>{ 실행할코드 }, [])
-
-  // // 3. useEffect 코드 실행전에 항상 실행
-  // useEffect(()=>{
-    
-  //   return()=>{
-  //     실행할코드
-  //   }
-  // })
-  // // 4. state가 변경될때마다 실행
-  // useEffect(()=>{ 
-  //   실행할코드
-  // }, [state])
-
+  let [탭, 탭변경] = useState(0);
 
   useEffect(()=>{
     //그 다음에 실행됨
@@ -62,8 +45,41 @@ function Detail(props){
           <button className="btn btn-danger">주문하기</button> 
         </div>
       </div>
+      
+      {/* UI 만드는법 */}
+        {/* 
+        1. html css로 디자인
+        2. UI의 현재상태를 저장할 state 만들기
+        3. 그 state에 따라서 UI가 어떻게 보일지 설정 */}
+      <Nav justify variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link eventKey="link-0" onClick={()=>{ 탭변경(0) }}>Active</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1" onClick={()=>{ 탭변경(1) }}>Loooonger NavLink</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2" onClick={()=>{ 탭변경(2) }}>Link</Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabContent 탭={탭} />
+
     </div>
   )
 }
+
+function TabContent(props){
+  if (props.탭 === 0){
+    return <div>내용0</div>
+  }
+  if (props.탭 === 1){
+    return <div>내용1</div>
+  }
+  if (props.탭 === 2){
+    return <div>내용2</div>
+  }
+}
+
+
 
 export default Detail;
