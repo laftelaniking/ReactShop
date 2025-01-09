@@ -1,6 +1,6 @@
 # React + Vite
 
-npm create vite@latest로 만든 리액트 프로젝트입니다.
+npm create vite@latest로 만든 리액트 프로젝트입니다. <br>
 git clone https://github.com/laftelaniking/ReactShop.git 하신후.
 npm install 하시면 됩니다.
 
