@@ -1,5 +1,9 @@
 # React + Vite
 
+npm create vite@latest로 만든 리액트 프로젝트입니다. <br>
+git clone https://github.com/laftelaniking/ReactShop.git 하신후. <br>
+npm install 하시면 됩니다.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
