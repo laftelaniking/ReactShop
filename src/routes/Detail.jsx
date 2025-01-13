@@ -1,28 +1,31 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Nav, Table } from 'react-bootstrap'
+import { Nav, Table } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { addProduct } from "../store";
  
 function Detail(props){
 
   let {id} = useParams();
-  let a = props.shoes.find((x)=> x.id == id )
+  let shoes = props.shoes.find((x)=> x.id == id )
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
   let [탭, 탭변경] = useState(0);
   
+  let state = useSelector((state)=> state )
+  let dispatch = useDispatch()
 
   useEffect(()=>{
     //그 다음에 실행됨
     setTimeout(()=>{ setAlert(false) }, 2000)
     return ()=>{
       //여기있는게 먼저 실행됨
-      //타이머 제거, 서버연결 ajax 중지
-      clearTimeout(a)
+      clearTimeout(shoes)
     }
   }, [count])  //mount
 
   return(
-    <div className="container">
+    <div className={'container'}>
       <button onClick={()=>{ setCount(count+1) }} >버튼</button>
       {count}
       {/* 삼항연산자    alert == true ? 보여준다: 안보여준다 */}
@@ -40,10 +43,13 @@ function Detail(props){
           <img src={ import.meta.env.BASE_URL + 'shoes'+ (parseInt(id)+1) +'.jpg'} width="100%" />
         </div>
         <div className="col-md-6">
-          <h4 className="pt-5">{a.title}</h4>
-          <p>{a.content}</p>
-          <p>{a.price}원</p>
-          <button className="btn btn-danger">주문하기</button> 
+          <h4 className="pt-5">{shoes.title}</h4>
+          <p>{shoes.content}</p>
+          <p>{shoes.price}원</p>
+          <button className="btn btn-danger" onClick={()=>{
+            dispatch(addProduct(shoes));
+            // console.log(shoes)
+          }}>주문하기</button> 
         </div>
       </div>
       

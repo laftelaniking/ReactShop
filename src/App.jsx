@@ -16,13 +16,13 @@ function App() {
     <div className='App'>  
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#">
             shop
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home" onClick={()=>{ navigate('/') }}>Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#" onClick={()=>{ navigate('/') }}>Home</Nav.Link>
+            <Nav.Link href="#" onClick={()=>{ navigate('/cart') }}>장바구니</Nav.Link>
+            <Nav.Link href="#">Pricing</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -40,7 +40,7 @@ function App() {
               {
                 shoes.map(function(a, i){
                   return(
-                    <Shu navigate={navigate} shoes={shoes} id={shoes[i].id} i={i}/>
+                    <Shu key={i} navigate={navigate} shoes={shoes} id={shoes[i].id} i={i}/>
                   )
                 })
               }
@@ -87,6 +87,7 @@ function Shu(props){
       <img src={ import.meta.env.BASE_URL + 'shoes' +(props.id+1) +'.jpg'} width='80%'/>
       <h4>{props.shoes[props.i].title}</h4>
       <p>{props.shoes[props.i].content}</p>
+      {props.i}
     </Col>
   )
 }
